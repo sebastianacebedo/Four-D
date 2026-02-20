@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book Appointment | Four-D Furniture Manufacturing</title>
+  <meta name="description" content="Schedule a consultation with Four-D Furniture Manufacturing." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVBAR
+       ============================================================ -->
+  <header>
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="index.html" class="nav-logo">
+          <span class="brand-name">Four-D Furniture</span>
+          <span class="brand-tagline">Manufacturing Co.</span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="appointment.html">Appointments</a></li>
+          <li><a href="inquiry.html">Inquiries</a></li>
+        </ul>
+        <button class="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+      <nav class="mobile-menu">
+        <a href="index.html">Home</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="appointment.html">Appointments</a>
+        <a href="inquiry.html">Inquiries</a>
+      </nav>
+    </nav>
+  </header>
+
+  <!-- ============================================================
+       PAGE HERO
+       ============================================================ -->
+  <section class="page-hero" style="background-image: linear-gradient(135deg, rgba(250,247,242,0.94) 60%, rgba(232,221,208,0.8) 100%), url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&q=80');">
+    <div class="page-hero-inner fade-in">
+      <span class="section-label">Schedule a Visit</span>
+      <h1 class="section-title" style="margin:0 auto 1rem;">Book an Appointment</h1>
+      <p class="section-desc" style="margin:0 auto; text-align:center;">
+        Visit our showroom or schedule a consultation with one of our furniture specialists.
+        Fill out the form below and we'll confirm your appointment within 24 hours.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       APPOINTMENT FORM SECTION
+       ============================================================ -->
+  <section class="form-section">
+    <div class="form-layout">
+
+      <!-- Info Panel -->
+      <div class="form-info">
+        <span class="section-label">Why Visit Us?</span>
+        <h2 class="section-title" style="font-size:1.8rem;">Let's Build Something Together</h2>
+        <div class="divider"></div>
+        <p style="color:var(--gray); font-size:0.92rem; margin-bottom:2.5rem; line-height:1.8;">
+          An in-person consultation allows us to understand your space, workflow,
+          and aesthetic preferences so we can create furniture that's truly yours.
+        </p>
+
+        <div class="info-item">
+          <div class="info-icon">&#128336;</div>
+          <div class="info-text">
+            <strong>Business Hours</strong>
+            <span>Monday to Saturday, 8:00 AM – 5:00 PM</span>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon">&#128205;</div>
+          <div class="info-text">
+            <strong>Showroom Location</strong>
+            <span>Caloocan City, Metro Manila, Philippines</span>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon">&#128222;</div>
+          <div class="info-text">
+            <strong>Call Us</strong>
+            <span>+63 (02) 8xxx-xxxx</span>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon">&#9993;</div>
+          <div class="info-text">
+            <strong>Email</strong>
+            <span>info@four-dfurniture.ph</span>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon">&#128203;</div>
+          <div class="info-text">
+            <strong>What to Expect</strong>
+            <span>We'll review your space, discuss your needs, and walk you through our materials and finishes.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form Card -->
+      <div class="form-card">
+        <h2>Appointment Request</h2>
+        <p class="form-sub">All fields are required. We'll confirm your slot by phone or email.</p>
+
+        <!-- Success Alert -->
+        <div id="apptSuccess" class="success-alert" role="alert">
+          <span class="check">&#10003;</span>
+          <div>
+            <strong>Appointment submitted successfully!</strong>
+            <span> We'll confirm your schedule within 24 hours.</span>
+          </div>
+        </div>
+
+        <!-- Form -->
+        <form id="appointmentForm" novalidate>
+
+          <!-- Name & Email -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="apptName">Full Name</label>
+              <input type="text" id="apptName" name="name" placeholder="Juan dela Cruz" />
+              <span class="error-msg" id="apptNameErr"></span>
+            </div>
+            <div class="form-group">
+              <label for="apptEmail">Email Address</label>
+              <input type="email" id="apptEmail" name="email" placeholder="juan@example.com" />
+              <span class="error-msg" id="apptEmailErr"></span>
+            </div>
+          </div>
+
+          <!-- Phone -->
+          <div class="form-group">
+            <label for="apptPhone">Phone Number</label>
+            <input type="tel" id="apptPhone" name="phone" placeholder="+63 9xx xxx xxxx" />
+            <span class="error-msg" id="apptPhoneErr"></span>
+          </div>
+
+          <!-- Date & Time -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="apptDate">Preferred Date</label>
+              <input type="date" id="apptDate" name="date" />
+              <span class="error-msg" id="apptDateErr"></span>
+            </div>
+            <div class="form-group">
+              <label for="apptTime">Preferred Time</label>
+              <select id="apptTime" name="time">
+                <option value="">Select a time</option>
+                <option value="08:00">8:00 AM</option>
+                <option value="09:00">9:00 AM</option>
+                <option value="10:00">10:00 AM</option>
+                <option value="11:00">11:00 AM</option>
+                <option value="13:00">1:00 PM</option>
+                <option value="14:00">2:00 PM</option>
+                <option value="15:00">3:00 PM</option>
+                <option value="16:00">4:00 PM</option>
+              </select>
+              <span class="error-msg" id="apptTimeErr"></span>
+            </div>
+          </div>
+
+          <!-- Message -->
+          <div class="form-group">
+            <label for="apptMessage">Message / Notes</label>
+            <textarea id="apptMessage" name="message" placeholder="Tell us a bit about your project, office size, or any specific requirements…"></textarea>
+            <span class="error-msg" id="apptMessageErr"></span>
+          </div>
+
+          <!-- Submit -->
+          <div class="form-submit-wrap">
+            <button type="submit" class="btn btn-primary">Submit Appointment Request</button>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span class="brand-name">Four-D Furniture</span>
+          <span class="brand-tagline">Manufacturing Co.</span>
+          <p>Crafting premium customized office furniture with quality, precision, and care—since 2009.</p>
+        </div>
+        <div>
+          <h4 class="footer-heading">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="appointment.html">Book Appointment</a></li>
+            <li><a href="inquiry.html">Send Inquiry</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-heading">Contact Us</h4>
+          <ul class="footer-contact">
+            <li><span class="icon">&#128205;</span><span>Caloocan City, Metro Manila, Philippines</span></li>
+            <li><span class="icon">&#128222;</span><span>+63 (02) 8xxx-xxxx</span></li>
+            <li><span class="icon">&#9993;</span><span>info@four-dfurniture.ph</span></li>
+            <li><span class="icon">&#128336;</span><span>Mon–Sat, 8:00 AM – 5:00 PM</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2025 Four-D Furniture Manufacturing Co. All rights reserved.</span>
+        <span>Caloocan City, Philippines</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
