@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Panel | Four-D Furniture Manufacturing</title>
+  <meta name="description" content="Private admin panel for Four-D Furniture Manufacturing Co." />
+
+  <!-- SHARED STYLESHEET — all CSS variables, .btn-primary, .btn-outline, fonts -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- ADMIN-ONLY STYLESHEET — sidebar, cards, badges, tables, toast, layout -->
+  <link rel="stylesheet" href="admin.css" />
+</head>
+
+<!-- admin-body activates the two-column layout in admin.css -->
+<body class="admin-body">
+
+<!-- Mobile overlay -->
+<div class="adm-overlay" id="admOverlay"></div>
+
+<!-- ============================================================
+     SIDEBAR
+     ============================================================ -->
+<aside class="adm-sidebar" id="admSidebar">
+
+  <div class="adm-logo">
+    <span class="brand-name">Four-D Furniture</span>
+    <span class="brand-tagline">Manufacturing Co.</span>
+    <span class="adm-pill">
+      <span class="adm-pill-dot"></span>
+      Admin Panel
+    </span>
+  </div>
+
+  <nav class="adm-nav">
+    <span class="adm-nav-label">Dashboard</span>
+
+    <div class="adm-nav-item active" data-tab="overview">
+      <span class="nav-icon">&#9632;</span>
+      Overview
+    </div>
+
+    <div class="adm-nav-item" data-tab="comms">
+      <span class="nav-icon">&#128203;</span>
+      Inquiries &amp; Appointments
+      <span class="adm-nav-badge" id="commsBadge"></span>
+    </div>
+
+    <div class="adm-nav-item" data-tab="portfolio">
+      <span class="nav-icon">&#129681;</span>
+      Portfolio Manager
+    </div>
+
+    <span class="adm-nav-label">Live Site</span>
+
+    <a class="adm-nav-item" href="index.html" target="_blank" rel="noopener">
+      <span class="nav-icon">&#127968;</span>
+      Homepage
+    </a>
+
+    <a class="adm-nav-item" href="portfolio.html" target="_blank" rel="noopener">
+      <span class="nav-icon">&#128444;</span>
+      Portfolio Page
+    </a>
+
+    <a class="adm-nav-item" href="inquiry.html" target="_blank" rel="noopener">
+      <span class="nav-icon">&#128231;</span>
+      Inquiry Form
+    </a>
+
+    <a class="adm-nav-item" href="appointment.html" target="_blank" rel="noopener">
+      <span class="nav-icon">&#128197;</span>
+      Appointment Form
+    </a>
+  </nav>
+
+  <div class="adm-sidebar-footer">
+    <div class="adm-avatar">SE</div>
+    <div>
+      <span class="adm-user-name">Sebastian</span>
+      <span class="adm-user-role">Four-D Administrator</span>
+    </div>
+  </div>
+
+</aside>
+
+<!-- ============================================================
+     MAIN AREA
+     ============================================================ -->
+<main class="adm-main">
+
+  <header class="adm-topbar">
+    <div class="adm-topbar-left">
+      <button class="adm-mob-toggle" id="admMobToggle" aria-label="Toggle sidebar">
+        <span></span><span></span><span></span>
+      </button>
+      <h1 class="adm-page-title" id="admPageTitle">Dashboard Overview</h1>
+    </div>
+    <div class="adm-topbar-right">
+      <span class="adm-date-chip" id="admDate"></span>
+      <a href="index.html" class="adm-back-link">&#8592; Back to Site</a>
+    </div>
+  </header>
+
+  <div class="adm-content">
+
+    <!-- ====================================================
+         PANEL 1 — OVERVIEW
+         ==================================================== -->
+    <section class="adm-panel active" id="panel-overview">
+
+      <!-- Stat Cards -->
+      <div class="adm-stats-row">
+        <div class="adm-stat s-brown">
+          <span class="adm-stat-label">Total Submissions</span>
+          <div class="adm-stat-value" id="statTotal">0</div>
+          <div class="adm-stat-sub">inquiries + appointments</div>
+        </div>
+        <div class="adm-stat">
+          <span class="adm-stat-label">New Inquiries</span>
+          <div class="adm-stat-value" id="statInquiries">0</div>
+          <div class="adm-stat-sub">from inquiry.html form</div>
+        </div>
+        <div class="adm-stat s-green">
+          <span class="adm-stat-label">Appointments</span>
+          <div class="adm-stat-value" id="statAppointments">0</div>
+          <div class="adm-stat-sub">Caloocan City showroom</div>
+        </div>
+        <div class="adm-stat s-amber">
+          <span class="adm-stat-label">Portfolio Items</span>
+          <div class="adm-stat-value" id="statPortfolio">0</div>
+          <div class="adm-stat-sub">admin-added products</div>
+        </div>
+      </div>
+
+      <!-- Two-column: Recent submissions + Quick actions -->
+      <div class="adm-two-col">
+
+        <!-- Recent submissions table -->
+        <div class="adm-card">
+          <div class="adm-card-header">
+            <span class="adm-card-title">Recent Submissions</span>
+            <span class="adm-card-meta">Latest 5 entries</span>
+          </div>
+          <div class="adm-table-wrap">
+            <table class="adm-table" id="recentTable">
+              <thead>
+                <tr>
+                  <th>Customer</th>
+                  <th>Type</th>
+                  <th class="hide-mob">Category / Notes</th>
+                  <th class="hide-mob">Date</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="recentBody"></tbody>
+            </table>
+            <div class="adm-empty" id="recentEmpty">
+              <div class="adm-empty-icon">&#128203;</div>
+              <p>
+                No submissions yet. Fill out the
+                <a href="inquiry.html" target="_blank" style="color:var(--brown);">Inquiry</a> or
+                <a href="appointment.html" target="_blank" style="color:var(--brown);">Appointment</a>
+                form on the live site — entries appear here instantly.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick actions panel -->
+        <div class="adm-card">
+          <div class="adm-card-header">
+            <span class="adm-card-title">Quick Actions</span>
+          </div>
+          <div style="padding:1.25rem 1.5rem; display:flex; flex-direction:column; gap:0.85rem;">
+
+            <!-- .btn-primary from style.css -->
+            <button class="btn btn-primary btn-sm" onclick="switchTab('comms')" style="text-align:center; border:none; cursor:pointer;">
+              &#128203; View All Submissions
+            </button>
+
+            <!-- .btn-outline from style.css -->
+            <button class="btn btn-outline btn-sm" onclick="switchTab('portfolio')" style="text-align:center; cursor:pointer;">
+              &#43; Add Portfolio Item
+            </button>
+
+            <a class="btn btn-outline btn-sm" href="portfolio.html" target="_blank" style="text-align:center;">
+              &#128444; View Live Portfolio
+            </a>
+
+            <div style="border-top:1px solid var(--beige-dark); padding-top:1rem; margin-top:0.25rem;">
+              <p style="font-size:0.75rem; color:var(--gray); line-height:1.8;">
+                <strong style="color:var(--brown-dark); display:block; margin-bottom:0.3rem;">How the data bridge works</strong>
+                When visitors submit <em>inquiry.html</em> or <em>appointment.html</em>,
+                <code>script.js</code> saves their data to <code>localStorage</code>.
+                This panel reads that same data. Portfolio items added here are injected
+                into <em>portfolio.html</em> automatically via
+                <code>loadAdminPortfolioItems()</code>.
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Status badge reference card -->
+      <div class="adm-card">
+        <div class="adm-card-header">
+          <span class="adm-card-title">Status Badge Reference</span>
+          <span class="adm-card-meta">Change any entry's status in the Inquiries &amp; Appointments tab</span>
+        </div>
+        <div style="padding:1.25rem 1.5rem; display:flex; gap:0.75rem; flex-wrap:wrap; align-items:center;">
+          <span class="badge badge-new">New</span>
+          <span class="badge badge-pending">Pending</span>
+          <span class="badge badge-quoted">Quoted</span>
+          <span class="badge badge-confirmed">Confirmed</span>
+          <span class="badge badge-done">Done</span>
+          <span style="font-size:0.76rem; color:var(--gray); margin-left:0.5rem;">
+            e.g. Cruz &amp; Partners Law Firm &#8594; <span class="badge badge-quoted">Quoted</span>
+          </span>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ====================================================
+         PANEL 2 — INQUIRIES & APPOINTMENTS (COMMS HUB)
+         ==================================================== -->
+    <section class="adm-panel" id="panel-comms">
+
+      <div class="adm-card">
+        <div class="adm-card-header">
+          <span class="adm-card-title">Communication Hub</span>
+          <!-- Filter strip -->
+          <div class="adm-filter-strip">
+            <input type="text"
+                   class="adm-filter-input"
+                   id="commsSearch"
+                   placeholder="Search name or email…" />
+            <select class="adm-filter-sel" id="commsTypeFilter">
+              <option value="all">All Types</option>
+              <option value="inquiry">Inquiries</option>
+              <option value="appointment">Appointments</option>
+            </select>
+            <select class="adm-filter-sel" id="commsCatFilter">
+              <option value="all">All Categories</option>
+              <option value="Seating">Seating</option>
+              <option value="Desking">Desking</option>
+              <option value="Storage">Storage</option>
+              <option value="Custom">Custom</option>
+            </select>
+            <select class="adm-filter-sel" id="commsStatusFilter">
+              <option value="all">All Statuses</option>
+              <option value="New">New</option>
+              <option value="Pending">Pending</option>
+              <option value="Quoted">Quoted</option>
+              <option value="Confirmed">Confirmed</option>
+              <option value="Done">Done</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="adm-table-wrap">
+          <table class="adm-table" id="commsTable">
+            <thead>
+              <tr>
+                <th>Name / Email</th>
+                <th>Type</th>
+                <th class="hide-mob">Category / Product</th>
+                <th class="hide-mob">Preferred Date</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="commsBody"></tbody>
+          </table>
+          <div class="adm-empty" id="commsEmpty">
+            <div class="adm-empty-icon">&#128203;</div>
+            <p>
+              No submissions yet. Open the
+              <a href="inquiry.html" target="_blank" style="color:var(--brown);">inquiry form</a> or
+              <a href="appointment.html" target="_blank" style="color:var(--brown);">appointment form</a>
+              in a separate tab, submit an entry, then refresh this page.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ====================================================
+         PANEL 3 — PORTFOLIO MANAGER
+         ==================================================== -->
+    <section class="adm-panel" id="panel-portfolio">
+
+      <div class="adm-pm-wrap">
+
+        <!-- Update Portfolio Form -->
+        <div class="adm-pm-form-card">
+          <div class="adm-pm-form-header">
+            <h3>&#43; Update Portfolio</h3>
+          </div>
+          <div class="adm-pm-form-body">
+            <form id="pmForm" novalidate>
+
+              <div class="adm-fg">
+                <label for="pmName">Product Name *</label>
+                <input type="text" id="pmName" placeholder="e.g. Walnut Executive Desk" />
+                <span class="adm-fg-err" id="pmNameErr">Product name is required.</span>
+              </div>
+
+              <div class="adm-fg">
+                <label for="pmCategory">Category *</label>
+                <select id="pmCategory">
+                  <option value="">Select category</option>
+                  <option value="seating">Seating</option>
+                  <option value="desking">Desking</option>
+                  <option value="storage">Storage</option>
+                  <option value="custom">Custom</option>
+                </select>
+                <span class="adm-fg-err" id="pmCatErr">Please select a category.</span>
+              </div>
+
+              <div class="adm-fg">
+                <label for="pmImageUrl">Image URL</label>
+                <input type="url" id="pmImageUrl" placeholder="https://images.unsplash.com/…" />
+                <div class="adm-img-preview" id="pmPreviewBox">
+                  <span id="pmPreviewTxt">Image preview will appear here</span>
+                  <img id="pmPreviewImg" alt="Preview" />
+                </div>
+              </div>
+
+              <div class="adm-fg">
+                <label for="pmDesc">Description *</label>
+                <textarea id="pmDesc" rows="3" placeholder="Short description of this piece…"></textarea>
+                <span class="adm-fg-err" id="pmDescErr">Description is required.</span>
+              </div>
+
+              <div class="adm-fg">
+                <label for="pmDimensions">Dimensions</label>
+                <input type="text" id="pmDimensions" placeholder="e.g. 180W × 80D × 76H cm" />
+              </div>
+
+              <div class="adm-fg">
+                <label for="pmMaterials">Materials</label>
+                <input type="text" id="pmMaterials" placeholder="e.g. Solid Narra, steel frame" />
+              </div>
+
+              <!-- Uses .btn .btn-primary from style.css -->
+              <button type="submit" class="btn btn-primary"
+                      style="width:100%; text-align:center; margin-top:0.5rem; border:none; cursor:pointer;">
+                &#43; Add to Portfolio
+              </button>
+
+            </form>
+          </div>
+        </div>
+
+        <!-- Items list -->
+        <div>
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1rem; flex-wrap:wrap; gap:0.5rem;">
+            <h3 style="font-family:var(--font-display); font-size:1.1rem; font-weight:600; color:var(--brown-dark);">
+              Admin-Added Items
+              <span id="pmCount" style="font-family:var(--font-body); font-size:0.84rem; color:var(--gray); font-weight:400;">(0)</span>
+            </h3>
+            <!-- Uses .btn-outline from style.css -->
+            <button id="pmClearBtn" class="btn btn-outline btn-sm" style="display:none; cursor:pointer;">
+              Clear All
+            </button>
+          </div>
+
+          <div id="pmList" class="adm-pm-list"></div>
+
+          <div class="adm-pm-empty" id="pmEmpty">
+            <div class="empty-icon">&#128230;</div>
+            <p>
+              No items added yet. Use the form on the left to add a product.<br>
+              It will automatically appear on
+              <a href="portfolio.html" target="_blank" style="color:var(--brown);">portfolio.html</a>
+              via <code>script.js → loadAdminPortfolioItems()</code>.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+  </div><!-- /adm-content -->
+</main>
+
+<!-- Toast -->
+<div class="adm-toast" id="admToast" role="alert" aria-live="polite">
+  <span class="adm-toast-icon" id="admToastIcon">&#10003;</span>
+  <div>
+    <span class="adm-toast-title" id="admToastTitle">Success!</span>
+    <span class="adm-toast-msg"   id="admToastMsg">Action completed.</span>
+  </div>
+</div>
+
+<!--
+  SCRIPTS
+  1. script.js — shared with all public pages.
+     Provides: lsGet, lsPush, loadAdminPortfolioItems,
+     buildProductCard, form validation. The admin panel
+     needs lsGet because admin.js calls it directly.
+  2. admin.js  — dashboard-only: tabs, tables, CRUD, toast.
+-->
+<script src="script.js"></script>
+<script src="admin.js"></script>
+
+</body>
+</html>
