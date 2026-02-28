@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inquiry | Four-D Furniture Manufacturing</title>
+  <meta name="description" content="Send an inquiry to Four-D Furniture Manufacturing for custom office furniture." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVBAR
+       ============================================================ -->
+  <header>
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="index.html" class="nav-logo">
+          <span class="brand-name">Four-D Furniture</span>
+          <span class="brand-tagline">Manufacturing Co.</span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="appointment.html">Appointments</a></li>
+          <li><a href="inquiry.html">Inquiries</a></li>
+        </ul>
+        <button class="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+      <nav class="mobile-menu">
+        <a href="index.html">Home</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="appointment.html">Appointments</a>
+        <a href="inquiry.html">Inquiries</a>
+      </nav>
+    </nav>
+  </header>
+
+  <!-- ============================================================
+       PAGE HERO
+       ============================================================ -->
+  <section class="page-hero" style="background-image: linear-gradient(135deg, rgba(250,247,242,0.94) 60%, rgba(232,221,208,0.8) 100%), url('https://images.unsplash.com/photo-1487017159836-4e23ece2e4cf?w=1600&q=80');">
+    <div class="page-hero-inner fade-in">
+      <span class="section-label">Get In Touch</span>
+      <h1 class="section-title" style="margin:0 auto 1rem;">Send Us an Inquiry</h1>
+      <p class="section-desc" style="margin:0 auto; text-align:center;">
+        Interested in one of our products or have a custom project in mind?
+        Fill out the form below and our team will get back to you promptly.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       INQUIRY FORM SECTION
+       ============================================================ -->
+  <section class="form-section">
+    <div class="form-layout">
+
+      <!-- Info Panel -->
+      <div class="form-info">
+        <span class="section-label">How It Works</span>
+        <h2 class="section-title" style="font-size:1.8rem;">From Inquiry to Delivery</h2>
+        <div class="divider"></div>
+        <p style="color:var(--gray); font-size:0.92rem; margin-bottom:2.5rem; line-height:1.8;">
+          We make the ordering process simple and transparent. Here's what happens
+          after you send your inquiry:
+        </p>
+
+        <div class="info-item">
+          <div class="info-icon">&#9312;</div>
+          <div class="info-text">
+            <strong>Submit Your Inquiry</strong>
+            <span>Tell us what you need and we'll respond within 1–2 business days.</span>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon">&#9313;</div>
+          <div class="info-text">
+            <strong>Consultation &amp; Design</strong>
+            <span>Our team discusses your requirements and presents custom design options.</span>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon">&#9314;</div>
+          <div class="info-text">
+            <strong>Quotation</strong>
+            <span>We provide a detailed quote with material specs and lead times—no surprises.</span>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon">&#9315;</div>
+          <div class="info-text">
+            <strong>Production &amp; Delivery</strong>
+            <span>Your furniture is crafted and delivered to your space, ready to install.</span>
+          </div>
+        </div>
+
+        <div class="info-item" style="margin-top:1rem;">
+          <div class="info-icon">&#128222;</div>
+          <div class="info-text">
+            <strong>Prefer to call?</strong>
+            <span>(+63) 9xxx-xxxx — Mon to Sat, 8 AM – 5 PM</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form Card -->
+      <div class="form-card">
+        <h2>Product Inquiry Form</h2>
+        <p class="form-sub">All fields are required. We'll respond within 1–2 business days.</p>
+
+        <!-- Success Alert -->
+        <div id="inqSuccess" class="success-alert" role="alert">
+          <span class="check">&#10003;</span>
+          <div>
+            <strong>Inquiry submitted successfully!</strong>
+            <span> Our team will be in touch with you shortly.</span>
+          </div>
+        </div>
+
+        <!-- Form -->
+        <form id="inquiryForm" novalidate>
+
+          <!-- Name & Email -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="inqName">Full Name</label>
+              <input type="text" id="inqName" name="name" placeholder="Juan dela Cruz" />
+              <span class="error-msg" id="inqNameErr"></span>
+            </div>
+            <div class="form-group">
+              <label for="inqEmail">Email Address</label>
+              <input type="email" id="inqEmail" name="email" placeholder="juan@example.com" />
+              <span class="error-msg" id="inqEmailErr"></span>
+            </div>
+          </div>
+
+          <!-- Phone -->
+          <div class="form-group">
+            <label for="inqPhone">Phone Number</label>
+            <input type="tel" id="inqPhone" name="phone" placeholder="+63 9xx xxx xxxx" />
+            <span class="error-msg" id="inqPhoneErr"></span>
+          </div>
+
+          <!-- Product of Interest -->
+          <div class="form-group">
+            <label for="inqProduct">Product of Interest</label>
+            <select id="inqProduct" name="product">
+              <option value="">Select a product category</option>
+              <optgroup label="Seating">
+                <option value="Executive Leather Chair">Executive Leather Chair</option>
+                <option value="Ergonomic Task Chair">Ergonomic Task Chair</option>
+                <option value="Conference Room Chair">Conference Room Chair</option>
+              </optgroup>
+              <optgroup label="Desking">
+                <option value="Executive L-Shape Desk">Executive L-Shape Desk</option>
+                <option value="Sit-Stand Height Adjustable Desk">Sit-Stand Height Adjustable Desk</option>
+                <option value="Open Plan Workstation">Open Plan Workstation</option>
+              </optgroup>
+              <optgroup label="Storage">
+                <option value="Floor-to-Ceiling Shelving Wall">Floor-to-Ceiling Shelving Wall</option>
+                <option value="Mobile Pedestal Filing Cabinet">Mobile Pedestal Filing Cabinet</option>
+                <option value="Executive Credenza">Executive Credenza</option>
+              </optgroup>
+              <option value="Custom / Other">Custom / Other (describe below)</option>
+            </select>
+            <span class="error-msg" id="inqProductErr"></span>
+          </div>
+
+          <!-- Message -->
+          <div class="form-group">
+            <label for="inqMessage">Message</label>
+            <textarea
+              id="inqMessage"
+              name="message"
+              placeholder="Please describe your project: number of pieces, room dimensions, preferred materials or finishes, timeline, and any other details…"
+            ></textarea>
+            <span class="error-msg" id="inqMessageErr"></span>
+          </div>
+
+          <!-- Submit -->
+          <div class="form-submit-wrap">
+            <button type="submit" class="btn btn-primary">Submit Inquiry</button>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span class="brand-name">Four-D Furniture</span>
+          <span class="brand-tagline">Manufacturing Co.</span>
+          <p>Crafting premium customized office furniture with quality, precision, and care—since 2021.</p>
+        </div>
+        <div>
+          <h4 class="footer-heading">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="appointment.html">Book Appointment</a></li>
+            <li><a href="inquiry.html">Send Inquiry</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-heading">Contact Us</h4>
+          <ul class="footer-contact">
+            <li><span class="icon">&#128205;</span><span>Caloocan City, Metro Manila, Philippines</span></li>
+            <li><span class="icon">&#128222;</span><span>(+63) 9xxx-xxxx</span></li>
+            <li><span class="icon">&#9993;</span><span>info@four-dfurniture.ph</span></li>
+            <li><span class="icon">&#128336;</span><span>Mon–Sat, 8:00 AM – 5:00 PM</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2025 Four-D Furniture Manufacturing Co. All rights reserved.</span>
+        <span>Caloocan City, Philippines</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
