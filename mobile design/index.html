@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>FOUR-D Furniture</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="phone-shell" id="app">
+
+  <!-- STATUS BAR (always visible) -->
+  <div class="status-bar" id="status-bar">
+    <span class="status-time">9:41</span>
+    <div class="status-icons">
+      <span>●●●</span>
+      <span>WiFi</span>
+      <span>🔋</span>
+    </div>
+  </div>
+
+  <!-- ======================== SPLASH ======================== -->
+  <div class="screen active" id="splash">
+    <div class="splash-logo">
+      <div class="splash-emblem"><span>IV</span></div>
+      <div class="splash-title">FOUR-D</div>
+      <div class="splash-sub">Furniture & Interiors</div>
+      <div class="splash-tagline">Crafted in Manila, Built for Life</div>
+    </div>
+    <div class="splash-loader">
+      <div class="splash-loader-bar"></div>
+    </div>
+  </div>
+
+  <!-- ======================== HOME ======================== -->
+  <div class="screen" id="home">
+    <div class="scroll-content">
+
+      <!-- Hero -->
+      <div class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-pattern"></div>
+        <div class="hero-furniture-img">
+          <svg class="hero-sofa-svg" viewBox="0 0 260 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="80" width="240" height="60" rx="12" fill="#3d2010"/>
+            <rect x="20" y="55" width="80" height="45" rx="10" fill="#4a2c1a"/>
+            <rect x="160" y="55" width="80" height="45" rx="10" fill="#4a2c1a"/>
+            <rect x="20" y="60" width="220" height="25" rx="8" fill="#5a3820"/>
+            <rect x="10" y="135" width="30" height="16" rx="5" fill="#2d1810"/>
+            <rect x="220" y="135" width="30" height="16" rx="5" fill="#2d1810"/>
+            <rect x="15" y="80" width="230" height="8" rx="4" fill="rgba(201,168,76,0.15)"/>
+            <rect x="25" y="60" width="70" height="5" rx="2.5" fill="rgba(201,168,76,0.1)"/>
+            <rect x="165" y="60" width="70" height="5" rx="2.5" fill="rgba(201,168,76,0.1)"/>
+          </svg>
+        </div>
+        <div class="hero-content">
+          <div class="hero-badge">Metro Manila</div>
+          <div class="hero-title">Where <em>Craft</em> Meets Character</div>
+          <div class="hero-desc">Premium handcrafted furniture designed for Filipino homes and offices.</div>
+          <button class="btn-primary" onclick="navigate('collections')">Explore Collections ›</button>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="section-header" style="padding-top:24px;">
+        <div class="section-title">Our Numbers</div>
+      </div>
+      <div class="stats-strip">
+        <div class="stat-item">
+          <div class="stat-num">500+</div>
+          <div class="stat-label">Pieces Made</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <div class="stat-num">12+</div>
+          <div class="stat-label">Years in Manila</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <div class="stat-num">4.9★</div>
+          <div class="stat-label">Client Rating</div>
+        </div>
+      </div>
+
+      <!-- Categories -->
+      <div class="section-header">
+        <div class="section-title">Browse By Room</div>
+        <div class="section-link" onclick="navigate('collections')">All →</div>
+      </div>
+      <div class="cat-scroll">
+        <div class="cat-pill" onclick="filterCollections('Living')">
+          <div class="cat-icon-wrap">🛋️</div>
+          <div class="cat-pill-name">Living</div>
+        </div>
+        <div class="cat-pill" onclick="filterCollections('Dining')">
+          <div class="cat-icon-wrap">🍽️</div>
+          <div class="cat-pill-name">Dining</div>
+        </div>
+        <div class="cat-pill" onclick="filterCollections('Bedroom')">
+          <div class="cat-icon-wrap">🛏️</div>
+          <div class="cat-pill-name">Bedroom</div>
+        </div>
+        <div class="cat-pill" onclick="filterCollections('Office')">
+          <div class="cat-icon-wrap">🪑</div>
+          <div class="cat-pill-name">Office</div>
+        </div>
+        <div class="cat-pill" onclick="filterCollections('Custom')">
+          <div class="cat-icon-wrap">✏️</div>
+          <div class="cat-pill-name">Custom</div>
+        </div>
+      </div>
+
+      <!-- Featured -->
+      <div class="section-header">
+        <div class="section-title">Featured Pieces</div>
+        <div class="section-link" onclick="navigate('collections')">More →</div>
+      </div>
+      <div class="featured-scroll">
+        <div class="feat-card" onclick="openProduct(0)">
+          <div class="feat-card-img">🛋️</div>
+          <div class="feat-card-body">
+            <div class="feat-card-cat">Living Room</div>
+            <div class="feat-card-name">Rizal Lounge Sofa</div>
+            <div class="feat-card-price">₱18,000 – ₱45,000</div>
+          </div>
+        </div>
+        <div class="feat-card" onclick="openProduct(2)">
+          <div class="feat-card-img">🪵</div>
+          <div class="feat-card-body">
+            <div class="feat-card-cat">Dining</div>
+            <div class="feat-card-name">Intramuros Dining Set</div>
+            <div class="feat-card-price">₱25,000 – ₱70,000</div>
+          </div>
+        </div>
+        <div class="feat-card" onclick="openProduct(5)">
+          <div class="feat-card-img">🛏️</div>
+          <div class="feat-card-body">
+            <div class="feat-card-cat">Bedroom</div>
+            <div class="feat-card-name">Makati Platform Bed</div>
+            <div class="feat-card-price">₱22,000 – ₱60,000</div>
+          </div>
+        </div>
+        <div class="feat-card" onclick="openProduct(7)">
+          <div class="feat-card-img">✏️</div>
+          <div class="feat-card-body">
+            <div class="feat-card-cat">Custom</div>
+            <div class="feat-card-name">Bespoke Series</div>
+            <div class="feat-card-price">₱30,000 & above</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Promises -->
+      <div class="section-header">
+        <div class="section-title">The FOUR-D Promise</div>
+      </div>
+      <div class="promise-strip">
+        <div class="promise-item">
+          <div class="promise-icon">🌿</div>
+          <div class="promise-title">Sustainable Wood</div>
+          <div class="promise-text">Locally sourced hardwoods from certified forests</div>
+        </div>
+        <div class="promise-item">
+          <div class="promise-icon">🔨</div>
+          <div class="promise-title">Handcrafted</div>
+          <div class="promise-text">Each piece made by skilled Filipino artisans</div>
+        </div>
+        <div class="promise-item">
+          <div class="promise-icon">📐</div>
+          <div class="promise-title">Made to Measure</div>
+          <div class="promise-text">Custom dimensions for your exact space</div>
+        </div>
+        <div class="promise-item">
+          <div class="promise-icon">🛡️</div>
+          <div class="promise-title">5-Year Warranty</div>
+          <div class="promise-text">Full structural guarantee on all pieces</div>
+        </div>
+      </div>
+
+      <div class="spacer-20"></div>
+
+    </div>
+  </div>
+
+  <!-- ======================== COLLECTIONS ======================== -->
+  <div class="screen" id="collections">
+    <div class="scroll-content">
+      <div class="screen-header">
+        <div class="screen-header-sub">Our Catalog</div>
+        <div class="screen-header-title">All Collections</div>
+      </div>
+
+      <div class="filter-tabs" id="filter-tabs">
+        <div class="filter-tab active" onclick="setFilter('All', this)">All</div>
+        <div class="filter-tab" onclick="setFilter('Living', this)">Living</div>
+        <div class="filter-tab" onclick="setFilter('Dining', this)">Dining</div>
+        <div class="filter-tab" onclick="setFilter('Bedroom', this)">Bedroom</div>
+        <div class="filter-tab" onclick="setFilter('Office', this)">Office</div>
+        <div class="filter-tab" onclick="setFilter('Custom', this)">Custom</div>
+      </div>
+
+      <div class="prod-grid" id="prod-grid">
+        <!-- Rendered by JS -->
+      </div>
+      <div class="spacer-20"></div>
+    </div>
+  </div>
+
+  <!-- ======================== PRODUCT DETAIL ======================== -->
+  <div class="screen" id="product-detail">
+    <div class="prod-detail-hero" id="detail-hero">
+      <div class="back-btn" onclick="navigate('collections')">‹</div>
+      <span id="detail-emoji" style="position:relative;z-index:1;">🛋️</span>
+    </div>
+    <div class="prod-detail-body">
+      <div class="prod-detail-cat" id="detail-cat">Living Room</div>
+      <div class="prod-detail-title" id="detail-name">Rizal Lounge Sofa</div>
+      <div class="price-range-chip">
+        <span class="price-range-label">Price Range</span>
+        <span class="price-range-value" id="detail-price">₱18,000 – ₱45,000</span>
+      </div>
+      <div class="material-chips" id="detail-materials"></div>
+      <div class="prod-desc" id="detail-desc">Description here.</div>
+      <div class="detail-specs" id="detail-specs"></div>
+      <button class="btn-inquiry" onclick="navigate('inquiry')">📋 Book an Inquiry</button>
+      <div class="spacer-20"></div>
+    </div>
+  </div>
+
+  <!-- ======================== INQUIRY ======================== -->
+  <div class="screen" id="inquiry">
+    <div class="success-overlay" id="success-overlay">
+      <div class="success-icon">✓</div>
+      <div class="success-title">Inquiry Sent!</div>
+      <div class="success-text">Thank you for reaching out to FOUR-D. Our team in Metro Manila will contact you within 24–48 hours to discuss your furniture needs.</div>
+      <button class="btn-primary" onclick="closeSuccess()">Back to Home</button>
+    </div>
+    <div class="scroll-content">
+      <div class="inquiry-header">
+        <div class="screen-header-sub" style="padding:0;margin-bottom:8px;">Book an Inquiry</div>
+        <div class="screen-header-title" style="padding:0;font-size:26px;">Tell Us What You Need</div>
+      </div>
+      <div class="form-body">
+        <div class="form-note">
+          <span>ℹ️</span>
+          <span>No payment required at this stage. Our team will reach out to discuss details, materials, and timeline.</span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Full Name</label>
+          <input class="form-input" type="text" placeholder="Juan dela Cruz" id="f-name">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Phone Number</label>
+          <input class="form-input" type="tel" placeholder="+63 9XX XXX XXXX" id="f-phone">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email Address</label>
+          <input class="form-input" type="email" placeholder="juan@email.com" id="f-email">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Product / Collection</label>
+          <div class="form-select-wrap">
+            <select class="form-input" id="f-product">
+              <option value="">Select a category...</option>
+              <option>Living Room Furniture</option>
+              <option>Dining Sets</option>
+              <option>Bedroom Furniture</option>
+              <option>Office Furniture</option>
+              <option>Custom / Bespoke Piece</option>
+              <option>Full Room Package</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Preferred Visit / Consultation Date</label>
+          <input class="form-input" type="date" id="f-date" style="color-scheme: dark;">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Your Message</label>
+          <textarea class="form-input" placeholder="Tell us about your space, preferred materials, dimensions, or any design ideas..." id="f-message"></textarea>
+        </div>
+
+        <button class="btn-inquiry" onclick="submitInquiry()">Send Inquiry →</button>
+        <div class="spacer-20"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================== ABOUT ======================== -->
+  <div class="screen" id="about">
+    <div class="scroll-content">
+      <div class="about-hero">
+        <div class="about-hero-title">Built with<br>Filipino <em>Soul.</em></div>
+      </div>
+
+      <div class="about-section">
+        <div class="about-section-title">Our Story</div>
+        <div class="about-text">FOUR-D was born in the streets of Metro Manila — a vision to bring world-class furniture craftsmanship to Filipino homes. Founded by a family of artisans, we believe that great furniture is not just functional; it's a statement of identity and a legacy for the next generation. Every nail, joint, and finish is a testament to our dedication to the craft.</div>
+      </div>
+
+      <div class="about-section">
+        <div class="about-section-title">Our Journey</div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-year">2012</div>
+            <div class="timeline-text">Founded in Quezon City with a small workshop and a big dream.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2015</div>
+            <div class="timeline-text">Expanded to Makati showroom. First commercial project in BGC.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2018</div>
+            <div class="timeline-text">Launched custom bespoke line. Partnered with local interior designers.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2021</div>
+            <div class="timeline-text">Opened flagship showroom in Pasig. 300+ pieces delivered Metro-wide.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2024</div>
+            <div class="timeline-text">Launched mobile-first experience. Serving all 16 cities of Metro Manila.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-section">
+        <div class="about-section-title">Our Values</div>
+        <div class="values-grid">
+          <div class="value-card">
+            <div class="value-icon">🏆</div>
+            <div class="value-title">Excellence</div>
+            <div class="value-text">We settle for nothing less than perfection in every joint and finish.</div>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">🌳</div>
+            <div class="value-title">Sustainability</div>
+            <div class="value-text">Responsibly sourced wood and eco-conscious finishing materials.</div>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">🤝</div>
+            <div class="value-title">Partnership</div>
+            <div class="value-text">We walk with every client from first sketch to final delivery.</div>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">🇵🇭</div>
+            <div class="value-title">Filipino Pride</div>
+            <div class="value-text">Proudly Made in Manila by Filipino hands for Filipino homes.</div>
+          </div>
+        </div>
+      </div>
+      <div class="spacer-20"></div>
+    </div>
+  </div>
+
+  <!-- ======================== SHOWROOM ======================== -->
+  <div class="screen" id="showroom">
+    <div class="scroll-content">
+      <div class="screen-header">
+        <div class="screen-header-sub">Visit Us</div>
+        <div class="screen-header-title">Our Showroom</div>
+      </div>
+
+      <div class="map-container">
+        <div class="map-grid"></div>
+        <div class="map-pin-container">
+          <span class="map-pin">📍</span>
+          <div class="map-label">FOUR-D Flagship — Pasig, Metro Manila</div>
+        </div>
+      </div>
+
+      <div class="address-card">
+        <div class="address-row">
+          <div class="address-icon">🏢</div>
+          <div class="address-info">
+            <div class="address-key">Address</div>
+            <div class="address-val">123 Ortigas Avenue, Pasig City,<br>Metro Manila 1600</div>
+          </div>
+        </div>
+        <div class="address-row">
+          <div class="address-icon">📞</div>
+          <div class="address-info">
+            <div class="address-key">Phone</div>
+            <div class="address-val">+63 2 8XXX-XXXX<br>+63 9XX-XXX-XXXX</div>
+          </div>
+        </div>
+        <div class="address-row">
+          <div class="address-icon">✉️</div>
+          <div class="address-info">
+            <div class="address-key">Email</div>
+            <div class="address-val">hello@four-d.ph</div>
+          </div>
+        </div>
+        <div class="address-row">
+          <div class="address-icon">🌐</div>
+          <div class="address-info">
+            <div class="address-key">Area Served</div>
+            <div class="address-val">All 16 Cities of Metro Manila</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hours-grid">
+        <div class="hours-title">⏰ Showroom Hours</div>
+        <div class="hours-row">
+          <span class="hours-day">Monday – Friday</span>
+          <span class="hours-time">9:00 AM – 6:00 PM</span>
+        </div>
+        <div class="hours-row">
+          <span class="hours-day">Saturday</span>
+          <span class="hours-time">10:00 AM – 5:00 PM</span>
+        </div>
+        <div class="hours-row">
+          <span class="hours-day">Sunday</span>
+          <span class="hours-time hours-closed">Closed</span>
+        </div>
+        <div class="hours-row">
+          <span class="hours-day">Holidays</span>
+          <span class="hours-time hours-closed">By Appointment</span>
+        </div>
+      </div>
+
+      <div class="contact-cta-row">
+        <div class="contact-btn" onclick="navigate('inquiry')">
+          <div class="contact-btn-icon">📋</div>
+          <div class="contact-btn-label">Book a Visit</div>
+        </div>
+        <div class="contact-btn">
+          <div class="contact-btn-icon">💬</div>
+          <div class="contact-btn-label">Viber / SMS</div>
+        </div>
+        <div class="contact-btn">
+          <div class="contact-btn-icon">📘</div>
+          <div class="contact-btn-label">Facebook</div>
+        </div>
+      </div>
+
+      <div class="spacer-20"></div>
+    </div>
+  </div>
+
+  <!-- ======================== BOTTOM NAV ======================== -->
+  <div class="bottom-nav" id="bottom-nav">
+    <div class="nav-btn active" onclick="navigate('home')" id="nav-home">
+      <div class="nav-icon">🏠</div>
+      <div class="nav-label">Home</div>
+      <div class="nav-dot"></div>
+    </div>
+    <div class="nav-btn" onclick="navigate('collections')" id="nav-collections">
+      <div class="nav-icon">🪵</div>
+      <div class="nav-label">Catalog</div>
+      <div class="nav-dot"></div>
+    </div>
+    <div class="nav-btn" onclick="navigate('inquiry')" id="nav-inquiry">
+      <div class="nav-icon">📋</div>
+      <div class="nav-label">Inquire</div>
+      <div class="nav-dot"></div>
+    </div>
+    <div class="nav-btn" onclick="navigate('about')" id="nav-about">
+      <div class="nav-icon">ℹ️</div>
+      <div class="nav-label">About</div>
+      <div class="nav-dot"></div>
+    </div>
+    <div class="nav-btn" onclick="navigate('showroom')" id="nav-showroom">
+      <div class="nav-icon">📍</div>
+      <div class="nav-label">Showroom</div>
+      <div class="nav-dot"></div>
+    </div>
+  </div>
+
+</div>
+
+
+  <script src="js/app.js"></script>
+</body>
+</html>
