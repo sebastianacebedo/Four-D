@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard | Four-D Furniture Manufacturing</title>
+  <meta name="description" content="Four-D Furniture Manufacturing — Internal Admin Dashboard." />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <!--
+    Stylesheet Load Order:
+    1. style.css     — Global brand variables (--brown-dark, --beige, etc.)
+    2. admin-style.css — Admin-specific layout, tables, modals
+  -->
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="admin-style.css" />
+</head>
+<body>
+
+  <!-- ============================================================
+       SIDEBAR
+       ============================================================ -->
+  <aside class="admin-sidebar" id="adminSidebar">
+
+    <!-- Logo -->
+    <div class="sidebar-logo">
+      <span class="brand-name">Four-D Furniture</span>
+      <span class="brand-tagline">Manufacturing Co.</span>
+      <span class="admin-pill">Admin Dashboard</span>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="sidebar-nav">
+
+      <span class="nav-group-label">Overview</span>
+      <a href="#" data-panel="overview" class="active">
+        <span class="nav-icon">⊞</span> Dashboard
+      </a>
+
+      <span class="nav-group-label">Manage</span>
+      <a href="#" data-panel="inquiries">
+        <span class="nav-icon">✉</span> Inquiries
+        <span class="nav-count" id="badgeInq" style="display:none;">0</span>
+      </a>
+      <a href="#" data-panel="appointments">
+        <span class="nav-icon">📅</span> Appointments
+        <span class="nav-count" id="badgeAppt" style="display:none;">0</span>
+      </a>
+      <a href="#" data-panel="portfolio">
+        <span class="nav-icon">◧</span> Portfolio
+      </a>
+
+      <hr class="sidebar-divider" />
+
+      <span class="nav-group-label">Site</span>
+      <!-- Bridge to user interface — opens in new tab -->
+      <a href="index.html" target="_blank" rel="noopener" class="live-link">
+        <span class="nav-icon">🌐</span> View Live Site
+        <span class="ext-icon">↗</span>
+      </a>
+      <a href="portfolio.html" target="_blank" rel="noopener" class="live-link">
+        <span class="nav-icon">◧</span> Live Portfolio
+        <span class="ext-icon">↗</span>
+      </a>
+
+    </nav>
+
+    <!-- Footer — user info + logout -->
+    <div class="sidebar-footer">
+      <div class="admin-info">
+        <div class="admin-avatar-sm">AD</div>
+        Administrator
+      </div>
+      <button class="logout-btn" onclick="handleLogout()">
+        <span>⏻</span> End Session &amp; Logout
+      </button>
+    </div>
+
+  </aside>
+
+  <!-- Mobile sidebar overlay -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- ============================================================
+       MAIN CONTENT
+       ============================================================ -->
+  <div class="admin-main">
+
+    <!-- Top Bar -->
+    <div class="admin-topbar">
+      <div class="topbar-left">
+        <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </button>
+        <div class="breadcrumb">
+          Admin &rsaquo; <span id="breadcrumbLabel">Dashboard</span>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <div class="topbar-date" id="topbarDate"></div>
+        <div class="topbar-admin">
+          <div class="topbar-avatar">AD</div>
+          <span>Administrator</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================================================
+         PAGE CONTENT — All panels
+         ====================================================== -->
+    <div class="admin-content">
+
+      <!-- =====================================================
+           PANEL: OVERVIEW / DASHBOARD
+           ===================================================== -->
+      <div class="admin-panel active" id="panel-overview">
+
+        <div class="panel-hd">
+          <div class="panel-hd-left">
+            <h1>Dashboard</h1>
+            <p>Overview of site activity — inquiries, appointments, and inventory.</p>
+          </div>
+          <button class="btn btn-ghost" onclick="resetDB()" title="Reset to factory defaults" style="font-size:0.72rem;">
+            ↺ Reset Data
+          </button>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats-row">
+          <div class="stat-card">
+            <span class="stat-bg-icon">✉</span>
+            <div class="stat-lbl">Total Inquiries</div>
+            <div class="stat-num" id="statInqTotal">—</div>
+            <div class="stat-hint" id="statInqPending">— pending response</div>
+          </div>
+          <div class="stat-card warn">
+            <span class="stat-bg-icon">📅</span>
+            <div class="stat-lbl">Pending Appointments</div>
+            <div class="stat-num" id="statApptPending">—</div>
+            <div class="stat-hint" id="statApptTotal">— total</div>
+          </div>
+          <div class="stat-card info">
+            <span class="stat-bg-icon">◧</span>
+            <div class="stat-lbl">Active Portfolio Items</div>
+            <div class="stat-num" id="statPortActive">—</div>
+            <div class="stat-hint" id="statPortUnavail">— unavailable</div>
+          </div>
+        </div>
+
+        <!-- Recent Inquiries -->
+        <div class="tbl-card" style="margin-bottom:1.5rem;">
+          <div class="tbl-card-hd">
+            <div>
+              <h3>Recent Inquiries</h3>
+              <p>Latest 3 submissions</p>
+            </div>
+            <button class="btn btn-ghost" onclick="switchPanel('inquiries')">View All &rarr;</button>
+          </div>
+          <div class="tbl-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Product</th>
+                  <th>Date</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="ovInqBody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Recent Appointments -->
+        <div class="tbl-card">
+          <div class="tbl-card-hd">
+            <div>
+              <h3>Upcoming Appointments</h3>
+              <p>Nearest 3 by date</p>
+            </div>
+            <button class="btn btn-ghost" onclick="switchPanel('appointments')">View All &rarr;</button>
+          </div>
+          <div class="tbl-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Date</th>
+                  <th>Time</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="ovApptBody"></tbody>
+            </table>
+          </div>
+        </div>
+
+      </div><!-- /panel-overview -->
+
+      <!-- =====================================================
+           PANEL: INQUIRIES
+           ===================================================== -->
+      <div class="admin-panel" id="panel-inquiries">
+
+        <div class="panel-hd">
+          <div class="panel-hd-left">
+            <h1>Inquiries</h1>
+            <p>Manage all product and service inquiries submitted through the website.</p>
+          </div>
+        </div>
+
+        <div class="tbl-card">
+          <div class="tbl-card-hd">
+            <div>
+              <h3>All Inquiries</h3>
+              <p id="inqCount">Loading…</p>
+            </div>
+            <div class="tbl-controls">
+              <input
+                type="text"
+                class="tbl-search"
+                id="inqSearch"
+                placeholder="Search name, email, product…"
+                oninput="filterTable('inq')"
+                aria-label="Search inquiries"
+              />
+            </div>
+          </div>
+          <div class="tbl-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th onclick="sortTable('inq','name')" class="sorted">
+                    Name <span class="sort-icon">↕</span>
+                  </th>
+                  <th>Contact</th>
+                  <th onclick="sortTable('inq','product')">
+                    Product <span class="sort-icon">↕</span>
+                  </th>
+                  <th>Message</th>
+                  <th onclick="sortTable('inq','date')">
+                    Date <span class="sort-icon">↕</span>
+                  </th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="inqTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+
+      </div><!-- /panel-inquiries -->
+
+      <!-- =====================================================
+           PANEL: APPOINTMENTS
+           ===================================================== -->
+      <div class="admin-panel" id="panel-appointments">
+
+        <div class="panel-hd">
+          <div class="panel-hd-left">
+            <h1>Appointments</h1>
+            <p>Manage showroom visits and consultation appointments.</p>
+          </div>
+        </div>
+
+        <div class="tbl-card">
+          <div class="tbl-card-hd">
+            <div>
+              <h3>All Appointments</h3>
+              <p id="apptCount">Loading…</p>
+            </div>
+            <div class="tbl-controls">
+              <input
+                type="text"
+                class="tbl-search"
+                id="apptSearch"
+                placeholder="Search name or email…"
+                oninput="filterTable('appt')"
+                aria-label="Search appointments"
+              />
+            </div>
+          </div>
+          <div class="tbl-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th onclick="sortTable('appt','name')" class="sorted">
+                    Name <span class="sort-icon">↕</span>
+                  </th>
+                  <th>Contact</th>
+                  <th onclick="sortTable('appt','date')">
+                    Date <span class="sort-icon">↕</span>
+                  </th>
+                  <th>Time</th>
+                  <th>Notes</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="apptTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+
+      </div><!-- /panel-appointments -->
+
+      <!-- =====================================================
+           PANEL: PORTFOLIO MANAGER
+           ===================================================== -->
+      <div class="admin-panel" id="panel-portfolio">
+
+        <div class="panel-hd">
+          <div class="panel-hd-left">
+            <h1>Portfolio Manager</h1>
+            <p>Add, edit, and control the visibility of your product showcase.</p>
+          </div>
+          <button class="btn btn-primary" onclick="openAddModal()">
+            &#43; Add New Item
+          </button>
+        </div>
+
+        <!-- Portfolio grid rendered by JS -->
+        <div class="pm-grid" id="pmGrid"></div>
+
+      </div><!-- /panel-portfolio -->
+
+    </div><!-- /admin-content -->
+  </div><!-- /admin-main -->
+
+  <!-- ============================================================
+       MODAL: ADD / EDIT PORTFOLIO ITEM
+       ============================================================ -->
+  <div class="modal-overlay" id="pmModal" role="dialog" aria-modal="true" aria-labelledby="pmModalTitle">
+    <div class="modal">
+      <div class="modal-hd">
+        <h3 id="pmModalTitle">Add New Portfolio Item</h3>
+        <button class="modal-x" onclick="closeModal('pmModal')" aria-label="Close modal">&#10005;</button>
+      </div>
+      <div class="modal-body">
+
+        <div class="fg">
+          <label for="pmTitle">Product Title <span style="color:#e74c3c">*</span></label>
+          <input type="text" id="pmTitle" placeholder="e.g. Executive Leather Chair" autocomplete="off" />
+        </div>
+
+        <div class="fg-row">
+          <div class="fg">
+            <label for="pmCategory">Category</label>
+            <select id="pmCategory">
+              <option value="seating">Seating</option>
+              <option value="desking">Desking</option>
+              <option value="storage">Storage</option>
+            </select>
+          </div>
+          <div class="fg">
+            <label for="pmAvailable">Availability</label>
+            <select id="pmAvailable">
+              <option value="true">Available</option>
+              <option value="false">Unavailable</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="fg">
+          <label for="pmDimensions">Dimensions</label>
+          <input type="text" id="pmDimensions" placeholder="e.g. 70W × 65D × 115H cm" />
+        </div>
+
+        <div class="fg">
+          <label for="pmMaterials">Materials</label>
+          <input type="text" id="pmMaterials" placeholder="e.g. Full-grain leather, steel frame, PU foam" />
+        </div>
+
+        <div class="fg">
+          <label for="pmDesc">Description</label>
+          <textarea id="pmDesc" rows="3" placeholder="Describe the product briefly…"></textarea>
+        </div>
+
+        <div class="fg">
+          <label>Product Image</label>
+          <div class="img-drop" onclick="document.getElementById('pmImgFile').click()" role="button" tabindex="0"
+               onkeypress="if(event.key==='Enter')document.getElementById('pmImgFile').click()">
+            <span class="drop-icon">📷</span>
+            <p><strong>Click to upload</strong> an image (mock — uses data URL)</p>
+            <p style="font-size:0.72rem;opacity:0.6;margin-top:0.2rem;">PNG · JPG · WEBP</p>
+          </div>
+          <input type="file" id="pmImgFile" style="display:none;" accept="image/png,image/jpeg,image/webp" />
+        </div>
+
+        <div class="fg">
+          <label for="pmImgUrl">…or paste an image URL</label>
+          <input type="url" id="pmImgUrl" placeholder="https://images.unsplash.com/…" />
+        </div>
+
+        <div id="pmImgPreviewWrap" class="img-preview" style="display:none;">
+          <img id="pmImgPreview" alt="Image preview" />
+        </div>
+
+      </div><!-- /modal-body -->
+      <div class="modal-ft">
+        <button class="btn btn-outline" onclick="closeModal('pmModal')">Cancel</button>
+        <button class="btn btn-primary" id="pmSaveBtn" onclick="savePmItem()">Add to Portfolio</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MODAL: DETAIL VIEW (inquiry / appointment)
+       ============================================================ -->
+  <div class="modal-overlay" id="detailModal" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+    <div class="modal" style="max-width:480px;">
+      <div class="modal-hd">
+        <h3 id="detailTitle">Detail View</h3>
+        <button class="modal-x" onclick="closeModal('detailModal')" aria-label="Close modal">&#10005;</button>
+      </div>
+      <div class="modal-body" id="detailBody"></div>
+      <div class="modal-ft">
+        <button class="btn btn-ghost" onclick="closeModal('detailModal')">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       TOAST CONTAINER
+       ============================================================ -->
+  <div class="toast-wrap" id="toastWrap" aria-live="polite" aria-atomic="false"></div>
+
+  <!-- Scripts — admin-script.js depends on the DOM being ready -->
+  <script src="admin-script.js"></script>
+
+</body>
+</html>
