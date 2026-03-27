@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Login | Four-D Furniture Manufacturing</title>
+  <meta name="description" content="Secure administrative access — Four-D Furniture Manufacturing Co." />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <!-- Google Fonts — identical import to style.css -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Admin login stylesheet -->
+  <link rel="stylesheet" href="login.css" />
+</head>
+
+<body>
+
+  <!-- ============================================================
+       LOGIN CARD
+       ============================================================ -->
+  <main class="login-card" id="loginCard">
+
+    <!-- Brand Logo -->
+    <div class="login-brand">
+      <div class="brand-rule">
+        <div class="brand-rule-diamond"></div>
+      </div>
+      <span class="brand-name">Four-D Furniture</span>
+      <span class="brand-tagline">Manufacturing Co.</span>
+      <span class="brand-access-pill">Admin Portal</span>
+    </div>
+
+    <!-- Error Alert (shown by login.js on wrong credentials) -->
+    <div class="login-alert" id="loginAlert" role="alert" aria-live="polite">
+      <span aria-hidden="true">&#9888;&nbsp;</span>
+      <span id="loginAlertMsg">Incorrect username or password.</span>
+    </div>
+
+    <!-- Form: Username and Password only -->
+    <form class="login-form" id="loginForm" novalidate autocomplete="on">
+
+      <!-- Username -->
+      <div class="login-field">
+        <label class="login-label" for="loginUser">Username</label>
+        <input
+          class="login-input"
+          type="text"
+          id="loginUser"
+          name="username"
+          placeholder="Enter your username"
+          autocomplete="username"
+          autocapitalize="off"
+          spellcheck="false"
+          required
+        />
+        <span class="field-err" id="userErr">Username is required.</span>
+      </div>
+
+      <!-- Password -->
+      <div class="login-field">
+        <label class="login-label" for="loginPass">Password</label>
+        <input
+          class="login-input"
+          type="password"
+          id="loginPass"
+          name="password"
+          placeholder="Enter your password"
+          autocomplete="current-password"
+          required
+        />
+        <span class="field-err" id="passErr">Password is required.</span>
+      </div>
+
+      <!-- Thin separator -->
+      <div class="login-sep" aria-hidden="true"></div>
+
+      <!-- Sign In: full-width, brown-dark, white uppercase DM Sans -->
+      <button class="login-btn" type="submit" id="loginBtn">
+        <span class="btn-text">Sign In</span>
+        <span class="btn-spinner" aria-hidden="true"></span>
+      </button>
+
+    </form>
+
+    <!-- Card copyright line -->
+    <p class="card-footer">
+      &copy; 2025 &nbsp;&middot;&nbsp; Four-D Furniture Manufacturing Co.
+    </p>
+
+  </main>
+
+  <!-- Page watermark -->
+  <p class="page-foot">Secure Access &nbsp;&middot;&nbsp; Caloocan City</p>
+
+  <!-- Admin login logic -->
+  <script src="login.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,426 @@
+/* ============================================================
+   FOUR-D FURNITURE MANUFACTURING
+   login.css  —  Admin login page styles
+   Loaded after Google Fonts link in login.html.
+   All values match style.css :root exactly.
+   ============================================================ */
+
+
+/* ============================================================
+   §1  CSS CUSTOM PROPERTIES
+   ============================================================ */
+:root {
+  --beige:        #f5efe6;
+  --beige-dark:   #e8ddd0;    /* 1.5 px input border               */
+  --cream:        #faf7f2;    /* page background                    */
+  --brown-light:  #c4a882;    /* tagline colour, focus ring         */
+  --brown:        #8b6845;    /* button hover                       */
+  --brown-dark:   #5c4430;    /* brand name, button background      */
+  --charcoal:     #2d2d2d;    /* body / input text                  */
+  --gray:         #6b6b6b;
+  --white:        #ffffff;    /* card background                    */
+
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'DM Sans', sans-serif;
+
+  --shadow-md:    0 6px 24px rgba(91, 68, 48, 0.12);
+  --shadow-lg:    0 16px 48px rgba(91, 68, 48, 0.16);
+
+  --radius-sm:    6px;
+  --radius-lg:    20px;       /* card corner radius                 */
+  --transition:   0.3s ease;
+}
+
+
+/* ============================================================
+   §2  RESET
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+
+/* ============================================================
+   §3  PAGE SHELL
+   Solid cream background, full-viewport flex centre.
+   Hairline grid overlay (3 % opacity) adds depth without
+   breaking the "solid" aesthetic.
+   ============================================================ */
+body {
+  font-family: var(--font-body);
+  background-color: var(--cream);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      rgba(196, 168, 130, 0.03) 0,
+      rgba(196, 168, 130, 0.03) 1px,
+      transparent 1px,
+      transparent 52px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(196, 168, 130, 0.03) 0,
+      rgba(196, 168, 130, 0.03) 1px,
+      transparent 1px,
+      transparent 52px
+    );
+}
+
+
+/* ============================================================
+   §4  LOGIN CARD
+   White, 20 px radius (--radius-lg), --shadow-md.
+   Vertical rectangle, centred, max 420 px wide.
+   ============================================================ */
+.login-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  width: 100%;
+  max-width: 420px;
+  padding: 3rem 3rem 3.25rem;
+  display: flex;
+  flex-direction: column;
+  animation: cardIn 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(20px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0)    scale(1);    }
+}
+
+
+/* ============================================================
+   §5  BRAND BLOCK
+   Logo centred at the top of the card.
+   ============================================================ */
+.login-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2.6rem;
+}
+
+/* Ornamental rule flanking a rotated diamond */
+.brand-rule {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 0.75rem;
+  margin-bottom: 1.35rem;
+}
+
+.brand-rule::before,
+.brand-rule::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--beige-dark);
+}
+
+.brand-rule-diamond {
+  width: 5px;
+  height: 5px;
+  background: var(--brown-light);
+  transform: rotate(45deg);
+  flex-shrink: 0;
+}
+
+/* Brand name — Cormorant Garamond, #5c4430 */
+.brand-name {
+  font-family: var(--font-display);
+  font-size: 1.9rem;
+  font-weight: 600;
+  color: var(--brown-dark);
+  letter-spacing: 0.01em;
+  line-height: 1.1;
+}
+
+/* Tagline — DM Sans tracked-out small caps, #c4a882 */
+.brand-tagline {
+  font-family: var(--font-body);
+  font-size: 0.59rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--brown-light);
+  margin-top: 0.32rem;
+}
+
+/* Quiet "Admin Portal" pill beneath the tagline */
+.brand-access-pill {
+  margin-top: 1.05rem;
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.57rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--beige-dark);
+  border: 1px solid var(--beige-dark);
+  padding: 0.22rem 0.85rem;
+  border-radius: 50px;
+}
+
+
+/* ============================================================
+   §6  ERROR ALERT BANNER
+   Hidden by default; JS adds .visible on wrong credentials.
+   ============================================================ */
+.login-alert {
+  display: none;
+  align-items: flex-start;
+  gap: 0.65rem;
+  background: #fff3f3;
+  border: 1px solid #fad7d7;
+  border-radius: var(--radius-sm);
+  padding: 0.85rem 1rem;
+  font-family: var(--font-body);
+  font-size: 0.79rem;
+  color: #b92a1e;
+  line-height: 1.55;
+  margin-bottom: 1.4rem;
+  animation: cardIn 0.28s ease both;
+}
+
+.login-alert.visible { display: flex; }
+
+
+/* ============================================================
+   §7  FORM
+   Two fields only: Username + Password.
+   ============================================================ */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+}
+
+/* Field wrapper */
+.login-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.42rem;
+}
+
+/* Label — DM Sans, uppercase, #5c4430 */
+.login-label {
+  font-family: var(--font-body);
+  font-size: 0.67rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--brown-dark);
+  user-select: none;
+}
+
+/* Input — 1.5 px beige-dark border, DM Sans */
+.login-input {
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-weight: 300;
+  color: var(--charcoal);
+  background: var(--cream);
+  border: 1.5px solid var(--beige-dark);
+  border-radius: var(--radius-sm);
+  padding: 0.82rem 1rem;
+  width: 100%;
+  outline: none;
+  -webkit-appearance: none;
+  transition:
+    border-color var(--transition),
+    box-shadow   var(--transition),
+    background   var(--transition);
+}
+
+/* Placeholder — DM Sans */
+.login-input::placeholder {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 300;
+  color: var(--beige-dark);
+  letter-spacing: 0.01em;
+}
+
+.login-input:hover { border-color: var(--brown-light); }
+
+.login-input:focus {
+  border-color: var(--brown-light);
+  background: var(--white);
+  box-shadow: 0 0 0 3px rgba(196, 168, 130, 0.16);
+}
+
+/* Validation error state (JS adds .is-error) */
+.login-input.is-error {
+  border-color: #c0392b;
+  box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.1);
+}
+
+/* Inline error message (JS adds .visible) */
+.field-err {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  color: #c0392b;
+  display: none;
+}
+
+.field-err.visible { display: block; }
+
+/* Thin separator above the button */
+.login-sep {
+  height: 1px;
+  background: var(--beige-dark);
+  opacity: 0.5;
+  margin: 0.15rem 0;
+}
+
+
+/* ============================================================
+   §8  SIGN IN BUTTON
+   Full-width · brown-dark (#5c4430) background ·
+   white uppercase DM Sans text.
+   ============================================================ */
+.login-btn {
+  position: relative;
+  overflow: hidden;
+  font-family: var(--font-body);
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--white);
+  background: var(--brown-dark);
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 1rem;
+  width: 100%;
+  cursor: pointer;
+  transition:
+    background var(--transition),
+    transform  0.2s ease,
+    box-shadow var(--transition);
+}
+
+/* Horizontal shimmer sweep on hover */
+.login-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    110deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.09) 50%,
+    transparent 70%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.52s ease;
+}
+
+.login-btn:hover {
+  background: var(--brown);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-lg);
+}
+
+.login-btn:hover::after { transform: translateX(100%); }
+
+.login-btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* Loading state — JS adds .is-loading */
+.login-btn.is-loading {
+  pointer-events: none;
+  opacity: 0.72;
+}
+
+.login-btn.is-loading .btn-text    { opacity: 0; }
+.login-btn.is-loading .btn-spinner { display: block; }
+
+.btn-text { position: relative; display: block; }
+
+/* Spinning indicator that replaces button label */
+.btn-spinner {
+  display: none;
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 17px;
+  height: 17px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: var(--white);
+  border-radius: 50%;
+  animation: spin 0.65s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+
+/* ============================================================
+   §9  CARD FOOTER
+   Copyright line at the very bottom of the card.
+   ============================================================ */
+.card-footer {
+  text-align: center;
+  margin-top: 2.25rem;
+  font-family: var(--font-body);
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--beige-dark);
+}
+
+
+/* ============================================================
+   §10  PAGE WATERMARK
+   Fixed to viewport bottom, nearly invisible.
+   ============================================================ */
+.page-foot {
+  position: fixed;
+  bottom: 1.25rem;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: var(--font-body);
+  font-size: 0.58rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(92, 68, 48, 0.18);
+  pointer-events: none;
+  user-select: none;
+}
+
+
+/* ============================================================
+   §11  ANIMATIONS
+   ============================================================ */
+
+/* Card shake on wrong credentials — triggered by JS */
+@keyframes loginShake {
+  0%, 100% { transform: translateX(0);   }
+  15%      { transform: translateX(-8px); }
+  30%      { transform: translateX(6px);  }
+  45%      { transform: translateX(-5px); }
+  60%      { transform: translateX(4px);  }
+  78%      { transform: translateX(-2px); }
+}
+
+
+/* ============================================================
+   §12  RESPONSIVE — small phones
+   ============================================================ */
+@media (max-width: 460px) {
+  .login-card { padding: 2.25rem 1.75rem 2.5rem; }
+  .brand-name { font-size: 1.65rem; }
+}
