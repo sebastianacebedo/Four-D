@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inquiry | Four-D Furniture Manufacturing</title>
+  <meta name="description" content="Send an inquiry to Four-D Furniture Manufacturing for custom office furniture." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="index.html" class="nav-logo">
+          <span class="brand-name">Four-D Furniture</span>
+          <span class="brand-tagline">Manufacturing Co.</span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="appointment.html">Appointments</a></li>
+          <li><a href="inquiry.html">Inquiries</a></li>
+        </ul>
+        <button class="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+      <nav class="mobile-menu">
+        <a href="index.html">Home</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="appointment.html">Appointments</a>
+        <a href="inquiry.html">Inquiries</a>
+      </nav>
+    </nav>
+  </header>
+
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="page-hero-inner fade-in">
+      <span class="section-label">Get In Touch</span>
+      <h1 class="section-title">Send Us an Inquiry</h1>
+      <p class="section-desc">
+        Interested in one of our products? Fill out the form below and we'll get back to you promptly.
+      </p>
+    </div>
+  </section>
+
+  <!-- INQUIRY FORM -->
+  <section class="form-section">
+    <div class="form-layout">
+
+      <!-- Info Column -->
+      <div class="form-info reveal">
+        <span class="section-label">Why Inquire?</span>
+        <h2 class="section-title" style="font-size:1.8rem;">Let's Discuss Your Project</h2>
+        <div class="divider"></div>
+        <p class="section-desc" style="margin-bottom:2rem;">
+          Every piece we make is built to order. Share your requirements and our team
+          will prepare a customized quotation for you.
+        </p>
+
+        <div class="info-item">
+          <div class="info-icon">&#9997;</div>
+          <div class="info-text">
+            <strong>Custom Orders</strong>
+            <span>All furniture is made to your exact specifications.</span>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">&#128200;</div>
+          <div class="info-text">
+            <strong>Free Quotation</strong>
+            <span>No commitment required — get a detailed quote at no cost.</span>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">&#128337;</div>
+          <div class="info-text">
+            <strong>Quick Response</strong>
+            <span>We reply to all inquiries within one business day.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form Column -->
+      <div class="form-card reveal">
+        <h2>Product Inquiry Form</h2>
+        <p class="form-sub">Tell us what you need and we'll prepare a custom quote for you.</p>
+
+        <div class="success-alert" id="inqSuccess">
+          <span class="check">&#10003;</span>
+          <span>Thank you! Your inquiry has been received. We'll be in touch within one business day.</span>
+        </div>
+
+        <form id="inquiryForm" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="inqName">Full Name</label>
+              <input type="text" id="inqName" name="name" placeholder="Juan dela Cruz" />
+              <span class="error-msg" id="inqNameErr"></span>
+            </div>
+            <div class="form-group">
+              <label for="inqEmail">Email Address</label>
+              <input type="email" id="inqEmail" name="email" placeholder="juan@example.com" />
+              <span class="error-msg" id="inqEmailErr"></span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inqPhone">Phone Number</label>
+            <input type="tel" id="inqPhone" name="phone" placeholder="+63 9XX XXX XXXX" />
+            <span class="error-msg" id="inqPhoneErr"></span>
+          </div>
+          <div class="form-group">
+            <label for="inqProduct">Product of Interest</label>
+            <input type="text" id="inqProduct" name="product" placeholder="e.g. Executive Leather Chair" />
+            <span class="error-msg" id="inqProductErr"></span>
+          </div>
+          <div class="form-group">
+            <label for="inqMessage">Message / Project Details</label>
+            <textarea id="inqMessage" name="content" placeholder="Describe your project, dimensions, materials, or any other requirements..."></textarea>
+            <span class="error-msg" id="inqMessageErr"></span>
+          </div>
+          <div class="form-submit-wrap">
+            <button type="submit" class="btn btn-primary">Submit Inquiry</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span class="brand-name">Four-D Furniture</span>
+          <span class="brand-tagline">Manufacturing Co.</span>
+          <p>Crafting premium customized office furniture with quality, precision,
+          and care—since 2021. Based in Bo. Sto. Cristo Tala, Caloocan City, Philippines.</p>
+        </div>
+        <div>
+          <h4 class="footer-heading">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="appointment.html">Book Appointment</a></li>
+            <li><a href="inquiry.html">Send Inquiry</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-heading">Contact Us</h4>
+          <ul class="footer-contact">
+            <li><span class="icon">&#128205;</span><span>Caloocan City, Metro Manila, Philippines</span></li>
+            <li><span class="icon">&#128222;</span><span>+63 912 425 0654</span></li>
+            <li><span class="icon">&#9993;</span><span>fourdfurniture2023@gmail.com</span></li>
+            <li><span class="icon">&#128336;</span><span>Mon–Fri, 8:00 AM – 5:00 PM</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Four-D Furniture Manufacturing Co. All rights reserved.</span>
+        <span>Caloocan City, Philippines</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

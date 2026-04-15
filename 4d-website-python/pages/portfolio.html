@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio | Four-D Furniture Manufacturing</title>
+  <meta name="description" content="Explore our portfolio of custom office furniture: seating, desking, and storage solutions." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="index.html" class="nav-logo">
+          <span class="brand-name">Four-D Furniture</span>
+          <span class="brand-tagline">Manufacturing Co.</span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="appointment.html">Appointments</a></li>
+          <li><a href="inquiry.html">Inquiries</a></li>
+        </ul>
+        <button class="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+      <nav class="mobile-menu">
+        <a href="index.html">Home</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="appointment.html">Appointments</a>
+        <a href="inquiry.html">Inquiries</a>
+      </nav>
+    </nav>
+  </header>
+
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="page-hero-inner fade-in">
+      <span class="section-label">Our Work</span>
+      <h1 class="section-title">Our Portfolio</h1>
+      <p class="section-desc">
+        A curated showcase of our custom office furniture projects.
+      </p>
+    </div>
+  </section>
+
+  <!-- FILTER BAR -->
+  <div class="filter-bar">
+    <div class="filter-inner">
+      <span class="filter-label">Filter by Category:</span>
+      <button class="filter-btn active" data-filter="all">All Products</button>
+      <button class="filter-btn" data-filter="seating">Seating</button>
+      <button class="filter-btn" data-filter="desking">Desking</button>
+      <button class="filter-btn" data-filter="storage">Storage</button>
+    </div>
+  </div>
+
+  <!-- PORTFOLIO GRID -->
+  <section class="portfolio-section">
+    <div class="section-inner">
+      <div class="portfolio-grid" id="portfolioGrid">
+        <article class="product-card" data-category="seating">
+          <div class="card-image-wrap">
+            <img src="https://images.unsplash.com/photo-1503602642458-232111445657?w=600&q=80" alt="Executive Leather Chair" loading="lazy" />
+            <span class="card-category-badge">Seating</span>
+            
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Executive Leather Chair</h3>
+            <p class="card-desc">High-back executive chair upholstered in full-grain leather with adjustable lumbar support and polished aluminum base.</p>
+            <div class="card-specs">
+              <span><strong>Dimensions:</strong> 70W × 65D × 115–125H cm</span>
+              <span><strong>Materials:</strong> Full-grain leather, solid steel frame, PU foam</span>
+            </div>
+            <a href="inquiry.html?product=Executive%20Leather%20Chair" class="btn btn-primary btn-sm">Request Quote</a>
+          </div>
+        </article>
+        <article class="product-card" data-category="seating">
+          <div class="card-image-wrap">
+            <img src="https://images.unsplash.com/photo-1580480055273-228ff5388ef8?w=600&q=80" alt="Ergonomic Task Chair" loading="lazy" />
+            <span class="card-category-badge">Seating</span>
+            
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Ergonomic Task Chair</h3>
+            <p class="card-desc">Breathable mesh back task chair with fully adjustable armrests, seat depth, and tilt tension for all-day comfort.</p>
+            <div class="card-specs">
+              <span><strong>Dimensions:</strong> 65W × 60D × 100–112H cm</span>
+              <span><strong>Materials:</strong> Mesh fabric, nylon frame, chrome-finish base</span>
+            </div>
+            <a href="inquiry.html?product=Ergonomic%20Task%20Chair" class="btn btn-primary btn-sm">Request Quote</a>
+          </div>
+        </article>
+        <article class="product-card" data-category="desking">
+          <div class="card-image-wrap">
+            <img src="https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=600&q=80" alt="Executive L-Shape Desk" loading="lazy" />
+            <span class="card-category-badge">Desking</span>
+            
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Executive L-Shape Desk</h3>
+            <p class="card-desc">Spacious L-shaped executive desk with cable management, a floating return, and solid hardwood top in custom finish.</p>
+            <div class="card-specs">
+              <span><strong>Dimensions:</strong> 180 × 90 + 120 × 60 cm; H: 76 cm</span>
+              <span><strong>Materials:</strong> Solid Narra wood, steel frame, lacquer finish</span>
+            </div>
+            <a href="inquiry.html?product=Executive%20L-Shape%20Desk" class="btn btn-primary btn-sm">Request Quote</a>
+          </div>
+        </article>
+        <article class="product-card" data-category="desking">
+          <div class="card-image-wrap">
+            <img src="https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?w=600&q=80" alt="Standing Desk Pro" loading="lazy" />
+            <span class="card-category-badge">Desking</span>
+            
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Standing Desk Pro</h3>
+            <p class="card-desc">Electric height-adjustable standing desk with memory presets, cable tray, and anti-collision sensor for seamless transitions.</p>
+            <div class="card-specs">
+              <span><strong>Dimensions:</strong> 160W × 80D cm; H: 62–128 cm</span>
+              <span><strong>Materials:</strong> Bamboo top, steel frame, dual-motor lift</span>
+            </div>
+            <a href="inquiry.html?product=Standing%20Desk%20Pro" class="btn btn-primary btn-sm">Request Quote</a>
+          </div>
+        </article>
+        <article class="product-card" data-category="storage">
+          <div class="card-image-wrap">
+            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Floor-to-Ceiling Shelving Wall" loading="lazy" />
+            <span class="card-category-badge">Storage</span>
+            
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Floor-to-Ceiling Shelving Wall</h3>
+            <p class="card-desc">Built-in shelving system with adjustable shelves, integrated lighting, and sliding wood panels for a clean, minimal look.</p>
+            <div class="card-specs">
+              <span><strong>Dimensions:</strong> Custom width; D: 35 cm; H: up to 300 cm</span>
+              <span><strong>Materials:</strong> Solid wood, MDF panels, integrated LED strip lighting</span>
+            </div>
+            <a href="inquiry.html?product=Floor-to-Ceiling%20Shelving%20Wall" class="btn btn-primary btn-sm">Request Quote</a>
+          </div>
+        </article>
+        <article class="product-card" data-category="storage">
+          <div class="card-image-wrap">
+            <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&q=80" alt="Mobile Pedestal Cabinet" loading="lazy" />
+            <span class="card-category-badge">Storage</span>
+            
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Mobile Pedestal Cabinet</h3>
+            <p class="card-desc">Rolling under-desk pedestal with two drawers and a file drawer. Lockable, with soft-close mechanism and matching desk finish.</p>
+            <div class="card-specs">
+              <span><strong>Dimensions:</strong> 40W × 52D × 60H cm</span>
+              <span><strong>Materials:</strong> Engineered wood, metal drawer glides, ABS edging</span>
+            </div>
+            <a href="inquiry.html?product=Mobile%20Pedestal%20Cabinet" class="btn btn-primary btn-sm">Request Quote</a>
+          </div>
+        </article>
+        <article class="product-card" data-category="desking">
+          <div class="card-image-wrap">
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80" alt="Conference Table — 8 Seater" loading="lazy" />
+            <span class="card-category-badge">Desking</span>
+            
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Conference Table — 8 Seater</h3>
+            <p class="card-desc">Solid-top conference table with integrated power and data ports, cable management spine, and solid wood legs.</p>
+            <div class="card-specs">
+              <span><strong>Dimensions:</strong> 240W × 110D × 76H cm</span>
+              <span><strong>Materials:</strong> Solid Acacia veneer top, powder-coated steel legs</span>
+            </div>
+            <a href="inquiry.html?product=Conference%20Table%20—%208%20Seater" class="btn btn-primary btn-sm">Request Quote</a>
+          </div>
+        </article>
+        <article class="product-card" data-category="seating">
+          <div class="card-image-wrap">
+            <img src="https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=600&q=80" alt="Mesh Visitor Chair" loading="lazy" />
+            <span class="card-category-badge">Seating</span>
+            <span class="unavailable-badge">Unavailable</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Mesh Visitor Chair</h3>
+            <p class="card-desc">Stackable mesh visitor chair with contoured back support, padded seat, and chrome sled base — ideal for reception areas.</p>
+            <div class="card-specs">
+              <span><strong>Dimensions:</strong> 55W × 58D × 85H cm</span>
+              <span><strong>Materials:</strong> Mesh back, foam seat, chrome sled base</span>
+            </div>
+            <span class="btn btn-sm" style="background:#ccc;color:#fff;cursor:not-allowed;">Unavailable</span>
+          </div>
+        </article>
+        <article class="product-card" data-category="storage">
+          <div class="card-image-wrap">
+            <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&q=80" alt="Lateral Filing Cabinet" loading="lazy" />
+            <span class="card-category-badge">Storage</span>
+            
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Lateral Filing Cabinet</h3>
+            <p class="card-desc">Wide lateral file cabinet accommodating letter and legal-size files. Full-extension drawers with central lock and label holders.</p>
+            <div class="card-specs">
+              <span><strong>Dimensions:</strong> 90W × 45D × 72H cm</span>
+              <span><strong>Materials:</strong> Cold-rolled steel, powder-coat finish, ABS pulls</span>
+            </div>
+            <a href="inquiry.html?product=Lateral%20Filing%20Cabinet" class="btn btn-primary btn-sm">Request Quote</a>
+          </div>
+        </article>
+      </div>
+      <div class="no-results" id="noResults">
+        <p>No products found for this category.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span class="brand-name">Four-D Furniture</span>
+          <span class="brand-tagline">Manufacturing Co.</span>
+          <p>Crafting premium customized office furniture with quality, precision,
+          and care—since 2021. Based in Bo. Sto. Cristo Tala, Caloocan City, Philippines.</p>
+        </div>
+        <div>
+          <h4 class="footer-heading">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="appointment.html">Book Appointment</a></li>
+            <li><a href="inquiry.html">Send Inquiry</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-heading">Contact Us</h4>
+          <ul class="footer-contact">
+            <li><span class="icon">&#128205;</span><span>Caloocan City, Metro Manila, Philippines</span></li>
+            <li><span class="icon">&#128222;</span><span>+63 912 425 0654</span></li>
+            <li><span class="icon">&#9993;</span><span>fourdfurniture2023@gmail.com</span></li>
+            <li><span class="icon">&#128336;</span><span>Mon–Fri, 8:00 AM – 5:00 PM</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Four-D Furniture Manufacturing Co. All rights reserved.</span>
+        <span>Caloocan City, Philippines</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
